@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<math.h>
 void input();
-void output(d);
+void output(float d);
 void calc(float x1, float y1, float x2, float y2);
 
 void input()
@@ -17,7 +17,7 @@ void input()
 void calc(float x1,float y1,float x2,float y2)
 {
 	float dist;
-dist=((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1);
+dist=((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
 	output(dist);
 }
 void output(float d)
