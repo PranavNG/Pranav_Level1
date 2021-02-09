@@ -1,9 +1,12 @@
 #include<stdio.h>
+void input();
+void add();
+void display();
 typedef struct frac
 {
 	int n,d;
 }frac;
-int main()
+void input()
 {
 	int n1,n2,d1,d2;
 	printf("Enter numerator and denominator of first fraction: ");
@@ -17,5 +20,14 @@ int main()
 void add(frac f, frac f1)
 {
 	frac sum={f.n*f1.d+f1.n*f.d, f.d*f1.d};
-	printf("Sum is equal to: %d/%d", sum.n,sum.d);
+	display(sum);
+}
+void display(frac sum)
+{
+	printf("The sum of the fractions is, %d/%d", sum.n,sum.d);
+}
+int main()
+{
+	input();
+	return 0;
 }
