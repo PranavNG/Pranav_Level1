@@ -11,7 +11,6 @@ void redform(int n, int nu[],int de[])
     for (int i = 0; i < n; i++) {
         f_num = f_num+ (f.nu[i]) * (f_den/ f.de[i]);
     }
-    int GCD = gcd(f_num,f_den);
     printf("The answer is %d/%d", f_num,f_den);
 }
 int lcm(int arra[], int n)
