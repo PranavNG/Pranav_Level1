@@ -10,15 +10,15 @@ frac input()
 	scanf("%d %d", &f.n,&f.d);
 	return f; 
 }
-frac add(struct frac f,struct frac f1)
+frac add(struct frac f,struct frac f1, int GCD)
 {
-	frac sum={f.n*f1.d+f1.n*f.d, f.d*f1.d};
+	frac sum={(f.n*f1.d+f1.n*f.d)/GCD, (f.d*f1.d)/GCD};
 	
 	return sum;
 }
-void display(struct frac sum, int GCD)
+void display(struct frac sum)
 {
-	printf("The sum of the fractions is, %d/%d", sum.n/GCD,sum.d/GCD);
+	printf("The sum of the fractions is, %d/%d", sum.n,sum.d);
 }
 int gcd(int x, int y)
 {
@@ -34,7 +34,7 @@ int main()
 	f1=input();
 	f2=input();
 	int GCD= gcd(f1.d,f2.d);
-	sum=add(f1,f2);
-	display(sum, GCD);
+	sum=add(f1,f2,GCD);
+	display(sum);
 	return 0;
 }
