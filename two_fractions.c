@@ -10,8 +10,9 @@ frac input()
 	scanf("%d %d", &f.n,&f.d);
 	return f; 
 }
-frac add(struct frac f,struct frac f1, int gcd)
+frac add(struct frac f,struct frac f1)
 {
+	int gcd= GCD(f1.d,f2.d);
 	frac sum={(f.n*f1.d+f1.n*f.d)/gcd, (f.d*f1.d)/gcd};
 	
 	return sum;
@@ -33,8 +34,7 @@ int main()
 	frac f1,f2,sum;
 	f1=input();
 	f2=input();
-	int gcd= GCD(f1.d,f2.d);
-	sum=add(f1,f2,gcd);
+	sum=add(f1,f2);
 	display(sum);
 	return 0;
 }
