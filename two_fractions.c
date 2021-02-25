@@ -39,6 +39,6 @@ int main()
 	f2=input();
 	sum=add(f1,f2);
 	
-	display(sum);
+	display(sum,f1,f2);
 	return 0;
 }
