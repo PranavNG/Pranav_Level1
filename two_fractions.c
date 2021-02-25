@@ -28,7 +28,7 @@ frac add(struct frac f1,struct frac f2)
 	frac f_sum={f_num/new_gcd, f_den/new_gcd};
 	return f_sum;
 }
-void display(struct frac f_sumstruct frac f1,struct frac f2)
+void display(struct frac f_sum,struct frac f1,struct frac f2)
 {
 	printf("The sum of fractions %d/%d and %d/%d is %d/%d", f1.n,f1.d,f2.n,f2.d,f_sum.n,f_sum.d);
 }
