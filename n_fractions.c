@@ -1,46 +1,54 @@
-//WAP to find the sum of n fractions.
-#include <stdio.h>
-struct fraction{
-    int nu[100];
-    int de[100];
-}f;
-void redform(int n, int nu[],int de[])
+#include<stdio.h>
+struct frac{
+	int n,d;
+};
+typedef struct frac Frac;
+Frac input()
 {
-    int f_num = 0;
-    int f_den = lcm(f.de, n);
-    for (int i = 0; i < n; i++) {
-        f_num = f_num+ (f.nu[i]) * (f_den/ f.de[i]);
-    }
-    printf("The answer is %d/%d", f_num,f_den);
+	Frac f;
+	printf("Enter numerator ");
+	scanf("%d",&f.n);
+	printf("Enter denominator ");
+	scanf("%d",&f.d);
+	return f;
 }
-int lcm(int arra[], int n)
+int GCD(int x, int y)
 {
-    int a = arra[0];
-    for (int i = 1; i < n; i++) {
-        a = ((arra[i] * a)/ gcd(arra[i], a));
-    }
-    return a;
+	if(y==0)
+		return x;
+	return GCD(y,x%y);
 }
-int gcd(int x, int y)
+Frac add(Frac f1,Frac f2)
 {
-    if (y == 0) {
-        return x;
-    }
- 
-    return gcd(y, x % y);
+    Frac temp;
+	temp.d=(f1.d*f2.d);
+	temp.n= (f1.n * f2.d) + (f2.n * f1.d); 
+	int gcd=GCD(temp.n,temp.d);
+	temp.n/=gcd;
+	temp.d/=gcd;
+	return temp;
+}
+void display(Frac sum)
+{
+	printf("the sum of fractions is %d/%d", sum.n,sum.d);
 }
 int main()
 {
-    int n;
-    printf("Enter number of fractions: ");
-    scanf("%d", &n);
-    for(int i=0;i<n;i++)
-    {
-        printf("Enter numerator of %d fraction", (i+1));
-        scanf("%d", &f.nu[i]);
-        printf("Enter denominator of %d fraction", (i+1));
-        scanf("%d", &f.de[i]);
-    }
-    redform(n, f.nu, f.de);
-    return 0;
+	int nf;
+	Frac sum;
+	sum.n=0;
+	sum.d=1;
+	printf("Enter number of fractions: ");
+	scanf("%d",&nf);
+	Frac f[nf];
+	for(int i=0;i<nf;i++)
+	{
+		f[i]=input();
+	}
+	for(int i=0;i<nf;i++)
+	{
+		sum=add(f[i],sum);
+	}
+	display(sum);
+	return 0;
 }
