@@ -1,44 +1,53 @@
 #include<stdio.h>
-typedef struct frac
-{
+struct Frac{
 	int n,d;
-}frac;
-frac input()
+};
+struct Frac input()
 {
-	frac f;
-	printf("Enter numerator and denominator of first fraction: ");
-	scanf("%d %d", &f.n,&f.d);
-	return f; 
+	struct Frac f;
+	printf("Enter numerator ");
+	scanf("%d",&f.n);
+	printf("Enter denominator ");
+	scanf("%d",&f.d);
+	return f;
 }
 int GCD(int x, int y)
 {
-    if (y == 0) {
-        return x;
-    }
- 
-    return GCD(y, x % y);
+	if(y==0)
+		return x;
+	return GCD(y,x%y);
 }
-frac add(struct frac f1,struct frac f2)
+struct Frac add(struct Frac f1,struct Frac f2)
 {
-	int gcd= GCD(f1.d,f2.d);
-	int f_den=(f1.d*f2.d)/gcd;
-	int f_num = (f1.n)*(f_den/f1.d) + (f2.n)*(f_den/f2.d); 
-	frac sum={f_num,f_den};
-	int new_gcd=GCD(sum.n,sum.d);
-	frac f_sum={f_num/new_gcd, f_den/new_gcd};
-	return f_sum;
+    struct Frac temp;
+	temp.d=(f1.d*f2.d);
+	temp.n= (f1.n * f2.d) + (f2.n * f1.d); 
+	int gcd=GCD(temp.n,temp.d);
+	temp.n/=gcd;
+	temp.d/=gcd;
+	return temp;
 }
-void display(struct frac f_sum,struct frac f1,struct frac f2)
+void display(struct Frac sum)
 {
-	printf("The sum of fractions %d/%d and %d/%d is %d/%d", f1.n,f1.d,f2.n,f2.d,f_sum.n,f_sum.d);
+	printf("the sum of fractions is %d/%d", sum.n,sum.d);
 }
 int main()
 {
-	frac f1,f2,sum;
-	f1=input();
-	f2=input();
-	sum=add(f1,f2);
-	
-	display(sum,f1,f2);
+	int nf;
+	struct Frac sum;
+	sum.n=0;
+	sum.d=1;
+	printf("Enter number of fractions: ");
+	scanf("%d",&nf);
+	struct Frac f[nf];
+	for(int i=0;i<nf;i++)
+	{
+		f[i]=input();
+	}
+	for(int i=0;i<nf;i++)
+	{
+		sum=add(f[i],sum);
+	}
+	display(sum);
 	return 0;
 }
