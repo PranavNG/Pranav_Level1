@@ -1,11 +1,10 @@
 #include<stdio.h>
-struct frac{
+struct Frac{
 	int n,d;
 };
-typedef struct frac Frac;
-Frac input()
+struct Frac input()
 {
-	Frac f;
+	struct Frac f;
 	printf("Enter numerator ");
 	scanf("%d",&f.n);
 	printf("Enter denominator ");
@@ -18,9 +17,9 @@ int GCD(int x, int y)
 		return x;
 	return GCD(y,x%y);
 }
-Frac add(Frac f1,Frac f2)
+struct Frac add(struct Frac f1,struct Frac f2)
 {
-    Frac temp;
+    struct Frac temp;
 	temp.d=(f1.d*f2.d);
 	temp.n= (f1.n * f2.d) + (f2.n * f1.d); 
 	int gcd=GCD(temp.n,temp.d);
@@ -28,19 +27,19 @@ Frac add(Frac f1,Frac f2)
 	temp.d/=gcd;
 	return temp;
 }
-void display(Frac sum)
+void display(struct Frac sum)
 {
 	printf("the sum of fractions is %d/%d", sum.n,sum.d);
 }
 int main()
 {
 	int nf;
-	Frac sum;
+	struct Frac sum;
 	sum.n=0;
 	sum.d=1;
 	printf("Enter number of fractions: ");
 	scanf("%d",&nf);
-	Frac f[nf];
+	struct Frac f[nf];
 	for(int i=0;i<nf;i++)
 	{
 		f[i]=input();
