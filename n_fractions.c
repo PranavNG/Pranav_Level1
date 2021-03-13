@@ -50,7 +50,15 @@ void add_n_fractions(int n, struct Frac arr[n])
 }
 void display(struct Frac sum)
 {
-	printf("the sum of fractions is %d/%d", sum.n,sum.d);
+	printf("%d/%d", sum.n,sum.d);
+}
+void display_n(int n,struct Frac arr[n])
+{
+    printf("the sum of fractions is ");
+    for(int i=0;i<n;i++)
+    {
+        display(arr[n]);
+    }
 }
 int main()
 {
@@ -58,6 +66,6 @@ int main()
 	struct Frac f[nf];
 	input_n_fractions(nf,f);
 	add_n_fractions(nf,f);
-	display(f);
+	display_n(nf,f);
 	return 0;
 }
