@@ -48,7 +48,7 @@ struct Frac compute_n_fractions(int n, struct Frac array[n])
     sum.d=1;
     for(int i=0;i<n;i++)
 	{
-	    sum=add(sum,array[i]);
+	    sum=compute(sum,array[i]);
 	}
 	return sum;
 }
