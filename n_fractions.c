@@ -31,7 +31,7 @@ int GCD(int x, int y)
 		return x;
 	return GCD(y,x%y);
 }
-struct Frac add(struct Frac f1,struct Frac f2)
+struct Frac compute(struct Frac f1,struct Frac f2)
 {
     struct Frac temp;
 	temp.d=(f1.d*f2.d);
@@ -41,7 +41,7 @@ struct Frac add(struct Frac f1,struct Frac f2)
 	temp.d/=gcd;
 	return temp;
 } 
-struct Frac add_n_fractions(int n, struct Frac array[n])
+struct Frac compute_n_fractions(int n, struct Frac array[n])
 {
     struct Frac sum;
     sum.n=0;
@@ -69,7 +69,7 @@ int main()
 	struct Frac f[nf];
 	input_n_fractions(nf,f);
 	struct Frac f_sum;
-	f_sum=add_n_fractions(nf,f);
+	f_sum=compute_n_fractions(nf,f);
 	display(nf,f,f_sum);
 	return 0;
 }
